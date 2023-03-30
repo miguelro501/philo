@@ -6,7 +6,7 @@
 #    By: miguelro <miguelro@students.42lisboa.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/28 17:00:30 by marvin            #+#    #+#              #
-#    Updated: 2023/03/30 13:03:39 by miguelro         ###   ########.fr        #
+#    Updated: 2023/03/30 15:22:26 by miguelro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = philo
 
 CC = gcc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS = -pthread -Wall -Wextra -Werror -g #-fsanitize=address
 
 INCLUDES = -I ./headers/
 

@@ -6,7 +6,7 @@
 /*   By: miguelro <miguelro@students.42lisboa.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 16:30:06 by miguelro          #+#    #+#             */
-/*   Updated: 2023/03/30 13:41:53 by miguelro         ###   ########.fr       */
+/*   Updated: 2023/03/30 15:22:47 by miguelro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,6 @@ void	print_menager(char *str, int id)
 	time = current_time();
 	if (!ft_strncmp(str, "DIED", 4))
 		printf("%lld %d died\n", time, id);
-	if (check_death(&handler()->philos[id - 1]))
-	{
-		pthread_mutex_unlock(&handler()->write);
-		return ;
-	}
 	else if (!ft_strncmp(str, "FORK", 4))
 		printf("%lld %d has taken a fork\n", time, id);
 	else if (!ft_strncmp(str, "EAT", 3))
@@ -68,18 +63,18 @@ void	kill(t_philo *self)
 	{
 		if (handler()->time_to_die < 2 * handler()->time_to_eat + 10)
 			ft_sleep(handler()->time_to_die - handler()->time_to_eat
-					- handler()->time_to_sleep);
+				- handler()->time_to_sleep);
 	}
 	else if (handler()->time_to_eat >= handler()->time_to_sleep)
 	{
 		if (handler()->time_to_die < 3 * handler()->time_to_eat + 10)
 			ft_sleep(handler()->time_to_die - handler()->time_to_eat
-					- handler()->time_to_sleep);
+				- handler()->time_to_sleep);
 	}
 	else if (handler()->time_to_die < handler()->time_to_sleep
-			+ handler()->time_to_eat + 10)
+		+ handler()->time_to_eat + 10)
 		ft_sleep(handler()->time_to_die - handler()->time_to_eat
-				- handler()->time_to_sleep);
+			- handler()->time_to_sleep);
 	check_death(self);
 }
 
